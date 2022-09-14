@@ -44,13 +44,17 @@ public class LeastLoadedFFD {
                     newbin = null;
                     break;
                 }
-
             }
 
-            if ( i == items.size() ) {
+            if ( i == items.size()) {
                 break;
             }
         }
+
+        for (Bin b : bins) {
+            System.out.println(b);
+        }
+
 
         return bins;
     }
