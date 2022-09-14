@@ -1,26 +1,22 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class LLFFD {
+public class LeastLoadedFFD {
 
-    public static void main(String[] args) {
+    private List<Item> items;
+    private double bincapacity;
 
+    public LeastLoadedFFD(List<Item> items, double bincapacity) {
+        this.items = items;
+        this.bincapacity = bincapacity;
+    }
 
-        double [] it = new double[]{70,40,30,20,10, 20};
-
-
-        ArrayList<Item> items = new ArrayList<>();
+    public List<Bin> fitFFD(){
         List<Bin> bins = new ArrayList<>();
 
-
-        for (int i = 0; i <6; i++) {
-            items.add(new Item(it[i]));
-        }
-
         Collections.sort(items, Collections.reverseOrder());
-        Bin bin = new Bin(100);
+        Bin bin = new Bin(bincapacity);
         bins.add(bin);
         Bin newbin = null;
 
@@ -29,7 +25,7 @@ public class LLFFD {
             for (Bin b : bins) {
                 b.removeAssignment();
             }
-            int i=0;
+            int i;
             for ( i = 0; i< items.size(); i++) {
                 Item itt = items.get(i);
 
@@ -40,7 +36,7 @@ public class LLFFD {
                         break;
                     }
                     if (b == bins.get(bins.size() - 1)) {
-                        newbin = new Bin(100);
+                        newbin = new Bin(bincapacity);
                         newbin.assign(itt);
                     }
                 }
@@ -57,23 +53,7 @@ public class LLFFD {
             }
         }
 
-
-        System.out.println(bins);
-        System.out.println("=======================================================");
-
-        LeastLoadedFFD llffd = new LeastLoadedFFD(items, 100);
-
-
-        FirstFitDecHetero ffdh = new FirstFitDecHetero(items, Arrays.asList(100.0, 150.0));
-
-        System.out.println(ffdh.fftFFDHetero());
-
-
-       // System.out.println(llffd.fitFFD());
-
+        return bins;
     }
 
-
-    }
-
-
+}

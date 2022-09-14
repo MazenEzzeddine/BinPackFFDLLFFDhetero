@@ -41,7 +41,7 @@ public class Main {
 
         Bin bin = new Bin(100);
         bins.add(bin);
-        Bin mybin = null;
+        Bin newbin = null;
         for (Item itt : items) {
             for (Bin b : bins) {
                 if (itt.getSize() <= b.currentCapacity()) {
@@ -49,13 +49,13 @@ public class Main {
                     break;
                 }
                 if (b == bins.get(bins.size() - 1)) {
-                    mybin = new Bin(100);
-                    mybin.assign(itt);
+                    newbin = new Bin(100);
+                    newbin.assign(itt);
                 }
             }
-            if (mybin != null) {
-                bins.add(mybin);
-                mybin = null;
+            if (newbin != null) {
+                bins.add(newbin);
+                newbin = null;
             }
             }
 

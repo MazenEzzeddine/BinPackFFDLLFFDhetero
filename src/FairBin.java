@@ -1,11 +1,10 @@
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 
-public class Bin implements Comparable {
+public class FairBin implements Comparable{
+
     private final double capacity;
     private double currentCapacity;
-    private  ArrayList<Item> Items;
+    private ArrayList<Item> Items;
 
     public void setCurrentCapacity(double currentCapacity) {
         this.currentCapacity = currentCapacity;
@@ -15,7 +14,7 @@ public class Bin implements Comparable {
         return currentCapacity;
     }
 
-    public Bin(double capacity) {
+    public FairBin(double capacity) {
         this.capacity = capacity;
         Items = new ArrayList<>();
         this.currentCapacity = capacity;
@@ -26,7 +25,7 @@ public class Bin implements Comparable {
     }
 
     public double currentCapacity(){
-      return currentCapacity;
+        return currentCapacity;
     }
 
     public void  assign(Item i) {
@@ -43,8 +42,8 @@ public class Bin implements Comparable {
     }
 
     public void  removeAssignment() {
-         Items.clear();
-         currentCapacity= capacity;
+        Items.clear();
+        currentCapacity= capacity;
 
     }
 
@@ -59,6 +58,6 @@ public class Bin implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return Double.compare(currentCapacity , ((Bin)o).currentCapacity);
+        return Double.compare(currentCapacity , ((FairBin)o).currentCapacity);
     }
 }
