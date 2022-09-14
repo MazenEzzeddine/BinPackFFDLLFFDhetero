@@ -12,7 +12,7 @@ public class FirstFitDecHetero {
         this.items = items;
     }
     List<Bin> fftFFDHetero() {
-        List<Bin> bins = new LeastLoadedFFD(items, capacities.get(capacities.size() - 1)).fitFFD();
+        List<Bin> bins = new FFD(capacities.get(capacities.size() - 1),items).fitFFD();
         capacities.sort(new Comparator<Double>() {
             @Override
             public int compare(Double o1, Double o2) {
@@ -24,7 +24,7 @@ public class FirstFitDecHetero {
         List<Bin> newbins = new ArrayList<>();
         for (Bin b : bins) {
             for (Double capacity : capacities) {
-                if ((b.getCapacity()- b.currentCapacity()) < capacity) {
+                if ((b.getCapacity()- b.currentCapacity()) <= capacity) {
                     Bin newbin = new Bin(capacity);
                     newbin.setItems(b.getItems());
                     newbin.setCurrentCapacity(b.getCurrentCapacity() - (b.getCapacity() - newbin.getCapacity()));
