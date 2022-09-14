@@ -45,7 +45,6 @@ public class Bin implements Comparable {
     public void  removeAssignment() {
          Items.clear();
          currentCapacity= capacity;
-
     }
 
     @Override

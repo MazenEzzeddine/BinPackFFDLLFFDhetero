@@ -14,9 +14,6 @@ public class FirstFitDecHetero {
     }
 
 
-
-
-
     List<Bin> fftFFDHetero() {
         List<Bin> bins = new LeastLoadedFFD(items, capacities.get(capacities.size() - 1)).fitFFD();
         capacities.sort(new Comparator<Double>() {
@@ -27,7 +24,6 @@ public class FirstFitDecHetero {
         });
 
         System.out.println(bins);
-
         List<Bin> newbins = new ArrayList<>();
         for (Bin b : bins) {
             for (Double capacity : capacities) {
@@ -42,15 +38,8 @@ public class FirstFitDecHetero {
             }
         }
 
-
         System.out.println(capacities);
-
-
         System.out.println(newbins);
-
-
-
-
         List<FairBin> fairbins =  new ArrayList<>();
 
         for(Bin b: newbins){

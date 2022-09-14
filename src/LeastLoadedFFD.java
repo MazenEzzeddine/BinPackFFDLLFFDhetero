@@ -21,7 +21,6 @@ public class LeastLoadedFFD {
         Bin newbin = null;
 
         while(true) {
-
             for (Bin b : bins) {
                 b.removeAssignment();
             }
